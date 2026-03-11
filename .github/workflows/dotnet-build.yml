@@ -2,9 +2,9 @@
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ] # Zmienione z main na master
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0  # Upewnij się, że pasuje do Twojej wersji (8.0 lub 9.0)
+        dotnet-version: 8.0 
 
     - name: Restore dependencies
       run: dotnet restore
