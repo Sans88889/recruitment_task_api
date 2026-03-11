@@ -22,7 +22,7 @@ namespace recruitment_task.Controllers
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrders()
         {
             var orders = await _context.Orders
-                .Include(o => o.Products) // To jest kluczowe! Ładujemy powiązane produkty
+                .Include(o => o.Products) 
                 .ToListAsync();
 
             var result = orders.Select(o => new OrderDto
@@ -45,19 +45,17 @@ namespace recruitment_task.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderDto>> CreateOrder(CreateOrderDto createOrderDto)
         {
-            // 1. Znajdź produkty w bazie na podstawie przesłanych ID
             var products = await _context.Products
                 .Where(p => createOrderDto.ProductIds.Contains(p.Id))
                 .ToListAsync();
 
             if (products.Count == 0) return BadRequest("Nie znaleziono żadnych pasujących produktów.");
 
-            // 2. Stwórz obiekt zamówienia
             var order = new Order
             {
                 CustomerName = createOrderDto.CustomerName,
                 OrderDate = DateTime.UtcNow,
-                Products = products // EF Core sam obsłuży tabelę łączącą!
+                Products = products // EF Core sam obsłuży tabelę łączącą
             };
 
             _context.Orders.Add(order);

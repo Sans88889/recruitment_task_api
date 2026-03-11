@@ -1,6 +1,0 @@
-@recruitment_task_HostAddress = http://localhost:5285
-
-GET {{recruitment_task_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
