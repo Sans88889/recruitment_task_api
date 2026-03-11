@@ -2,9 +2,9 @@
 
 on:
   push:
-    branches: [ "master" ] # Zmienione z main na master
+    branches: [ "main" ] # Zmienione z main na master
   pull_request:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build:
