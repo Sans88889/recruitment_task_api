@@ -17,7 +17,7 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
   name: webAppName
   location: location
   properties: {
-    serverFarmId: appServicePlan.id
+    serverFarmId: appServicePlan.id       
     siteConfig: {
       linuxFxVersion: 'DOTNETCORE|8.0'
     }
